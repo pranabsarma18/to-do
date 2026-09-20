@@ -1,0 +1,300 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    grid-template-rows: 80px 1fr;
+}
+
+header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    background-color: #945555;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.main {
+    height: 100%;
+    padding: 30px;
+}
+
+.todos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+nav {
+    height: 100%;
+    padding: 20px;
+    background-color: #a64444;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid gold;
+}
+
+.project-todo-add {
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+    place-items: center;
+    margin-bottom: 150px;
+}
+
+.projects button {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 6px;
+    background-color: #c4aaaa;
+    cursor: pointer;
+}
+
+.projects button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.project-todo-add > button {
+    display: block;
+    padding: 8px 20px;
+    margin: 15px auto;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #d9eaea;
+}
+
+.main .todo h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.main .todo {
+    height: max-content;
+    padding: 15px;
+    margin: 0;
+    background-color: #aaa;
+    border-radius: 8px;
+    border: 1px solid #888;
+
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+}
+
+.todo-details {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+}
+
+.todo-summary {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+}
+
+.todo-actions {
+    margin-top: auto;
+    /* margin-top: 20px; */
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.todo-actions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.priority {
+    font-weight: bold;
+}
+
+.priority.high {
+    color: #b43a3a;
+}
+
+.priority.medium {
+    color: #b8860b;
+}
+
+.priority.low {
+    color: #2e7d32;
+}
+
+.status-todo {
+    background-color: #279595;
+}
+
+.status-todo.complete  {
+    background-color: green;
+}
+
+.status-todo.incomplete  {
+    background-color: orange;
+}
+
+
+.projects button,
+nav > button {
+    width: 120px;
+}
+
+dialog {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+
+#todo-form, #edit-todo-form, #project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#todo-form input, #edit-todo-form input,
+#todo-form textarea, #edit-todo-form textarea,
+#todo-form select, #edit-todo-form select,
+#project-form input
+{
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#todo-form textarea, #edit-todo-form textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+#todo-form button, #edit-todo-form button, #project-form button,
+dialog > button {
+    padding: 8px 12px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#todo-form button, #edit-todo-form button {
+    margin-top: 10px;
+}
+
+dialog > button {
+    margin-top: 15px;
+}
+
+#delete-dialog h2 {
+    margin: 0;
+    padding: 0;
+}
+
+#delete-dialog button {
+    margin-right: 20px;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 6px;
+    background-color: #c4aaaa;
+    cursor: pointer;
+}
+
+.todo-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+
+
+.details-btn {
+    margin-top: 5px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+
+.hide-details-btn {
+    margin-top: 10px;
+    display: none;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.todo.complete {
+    opacity: 0.5;
+}
+
+.todo.complete .title, 
+.todo.complete .due, 
+.todo.complete .project, 
+.todo.complete .description, 
+.todo.complete .overdue, 
+.todo.complete .notes, 
+.todo.complete .priority{
+    text-decoration: line-through;
+}
+
+.project.selected {
+    background-color: #bc8a26;
+}
+
+
+/*Mobile Responsiveness (Outside the scope of the project and this is just for making it look little pretty on mobile devices*/
+@media (max-width: 600px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header h1 {
+        text-align: center;
+    }
+
+    .projects {
+        margin-bottom: 10px;
+    }
+    .project-todo-add {
+        margin-bottom: 10px;
+    }
+
+    .main {
+    padding: 10px;
+}
+}
+
+
