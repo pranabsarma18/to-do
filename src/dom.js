@@ -252,15 +252,15 @@ function editDisplay(todoObject, projectArr) {
     prioritySelect.name = "priority";
 
     const highOption = document.createElement("option");
-    highOption.value = "high";
+    highOption.value = "High";
     highOption.textContent = "High";
 
     const mediumOption = document.createElement("option");
-    mediumOption.value = "medium";
+    mediumOption.value = "Medium";
     mediumOption.textContent = "Medium";
 
     const lowOption = document.createElement("option");
-    lowOption.value = "low";
+    lowOption.value = "Low";
     lowOption.textContent = "Low";
 
     prioritySelect.append(
